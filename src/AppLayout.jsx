@@ -1,9 +1,10 @@
 import { Outlet } from 'react-router-dom';
+import Header from './Header';
 
 function AppLayout() {
   return (
     <div>
-      Layout
+      <Header />
       <main className="flex-grow">
         <Outlet />
       </main>
