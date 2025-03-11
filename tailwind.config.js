@@ -4,7 +4,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        primary: ['Ponomar', 'sans-serif'], // Custom font
+        primary: ['Ponomar', 'sans-serif'],
+        primary2: ['Pacifico', 'sans-serif'], // Custom font
       },
     },
   },

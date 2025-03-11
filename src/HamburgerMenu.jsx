@@ -15,19 +15,13 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
     <div>
       {isOpenModal && (
         <>
-          {/* Blurry Overlay */}
+          {/* Sidebar Menu (Slides in from Top) */}
           <motion.div
-            className="fixed inset-0 z-[999] bg-black/40 backdrop-blur-sm"
-            onClick={() => setIsOpenModal(false)}
-          ></motion.div>
-
-          {/* Sidebar Menu */}
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
+            initial={{ y: '-100%' }} // Start position (Above the screen)
+            animate={{ y: 0 }} // Slide down to visible
+            exit={{ y: '-100%' }} // Slide back up when closing
             transition={{ ease: 'easeInOut', duration: 0.5 }}
-            className="font-oswald text-custom-black fixed right-0 top-0 z-[1000] h-screen w-80 bg-white p-4 shadow-lg"
+            className="absolute left-0 top-0 w-full bg-white p-4 shadow-lg"
           >
             {/* Close Button */}
             <div className="flex justify-end">
@@ -41,7 +35,7 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
             </div>
 
             {/* Menu Items */}
-            <ul className="mt-4 flex flex-col gap-4">
+            <ul className="mt-1 flex flex-col gap-4 text-center">
               <li>
                 <button
                   onClick={() => handleNavigation('/about')}
@@ -68,6 +62,7 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
                   Services
                 </button>
               </li>
+
               <li>
                 <button
                   onClick={() => handleNavigation('/contact')}

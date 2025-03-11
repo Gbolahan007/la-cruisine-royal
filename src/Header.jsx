@@ -43,7 +43,7 @@ function Header() {
           onClick={() => navigate('/home')}
           className={`cursor-pointer text-2xl font-bold ${scrolled ? 'text-black' : 'font font-primary text-white'}`}
         >
-          La Cruisine Royal
+          <span className="text-yellow-300">La</span> Cruisine Royal
         </div>
 
         <nav className="hidden sm:block">
@@ -121,7 +121,7 @@ function Header() {
 
             <li>
               <NavLink
-                to="/contact"
+                to="/Reservation"
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium text-yellow-400'
@@ -136,7 +136,7 @@ function Header() {
 
             <li>
               <NavLink
-                to="/contact"
+                to="/Login"
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium text-yellow-400'
@@ -151,7 +151,7 @@ function Header() {
           </ul>
         </nav>
 
-        <div className="cursor-pointer sm:hidden">
+        <div className="absolute right-4 cursor-pointer sm:hidden">
           <button
             onClick={handleModal}
             className={`rounded-full p-2 transition-all duration-200 ${
