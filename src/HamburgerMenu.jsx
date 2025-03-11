@@ -34,7 +34,7 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
               <button
                 onClick={() => setIsOpenModal(false)}
                 aria-label="Close menu"
-                className="rounded-md p-2 transition hover:bg-gray-200"
+                className="cursor-pointer rounded-md p-2 transition hover:bg-gray-200"
               >
                 <HiOutlineXMark size={24} />
               </button>
@@ -74,6 +74,15 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
                   className="block w-full pb-2 uppercase transition hover:text-yellow-600"
                 >
                   Contact
+                </button>
+              </li>
+
+              <li>
+                <button
+                  onClick={() => handleNavigation('/contact')}
+                  className="block w-full pb-2 uppercase transition hover:text-yellow-600"
+                >
+                  Reservation
                 </button>
               </li>
             </ul>
