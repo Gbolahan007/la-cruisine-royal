@@ -72,8 +72,8 @@ function Home() {
 
         {/* Additional content sections */}
         <Parallax
-          strength={300}
-          bgImage="/ress.webp"
+          strength={400}
+          bgImage="/yyy.webp"
           bgImageStyle={{
             width: '100%',
             height: '100%',
@@ -81,7 +81,7 @@ function Home() {
             objectPosition: 'center',
           }}
         >
-          <div className="mx-auto my-8 mt-12 w-full max-w-[90%]">
+          <div className="mx-auto my-10 mt-28 w-full max-w-[90%]">
             {/* Grid container */}
             <div className="grid h-full w-full grid-cols-1 lg:grid-cols-2">
               {/* Text Section */}
