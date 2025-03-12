@@ -1,6 +1,8 @@
 import { Parallax } from 'react-parallax';
+import { useNavigate } from 'react-router-dom';
 
 function Home() {
+  const navigate = useNavigate();
   return (
     <div className="relative">
       {/* Hero Section with Parallax as fixed background */}
@@ -20,10 +22,10 @@ function Home() {
           <div className="flex h-screen flex-col items-center justify-center">
             <div className="container mx-auto flex h-full flex-col items-center justify-center text-center text-white">
               <h1 className="mb-4">
-                <span className="font-primary2 mb-2 block text-3xl font-light uppercase tracking-wider">
+                <span className="mb-2 block font-primary2 text-3xl font-light uppercase tracking-wider">
                   Welcome to
                 </span>
-                <span className="font-primary block text-7xl font-bold">
+                <span className="block font-primary text-7xl font-bold">
                   <span className="text-yellow-300">La</span> Cruisine Royal
                 </span>
               </h1>
@@ -56,6 +58,16 @@ function Home() {
           <p className="text-lg text-gray-700">
             indulgence, spiced with world-class entertainment.
           </p>
+
+          <button
+            onClick={() => navigate('/about')}
+            className="group relative mt-7 cursor-pointer overflow-hidden border-2 border-gray-900 px-6 py-2 font-medium tracking-widest text-gray-900"
+          >
+            <span className="relative z-10 uppercase transition-colors duration-300 group-hover:text-white">
+              About us
+            </span>
+            <span className="absolute inset-0 z-0 block w-0 bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+          </button>
         </div>
 
         {/* Additional content sections */}
@@ -69,43 +81,40 @@ function Home() {
             objectPosition: 'center',
           }}
         >
-          <div className="mx-16 my-14 mt-4">
-            {/* Content section */}
-            <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-1 overflow-hidden rounded-xl shadow-lg lg:grid-cols-2">
-                {/* Text section */}
-                <div className="order-2 flex flex-col justify-center bg-white px-6 py-12 text-center sm:order-1 sm:px-8 md:px-12 lg:px-16">
-                  <h1 className="relative mb-4 inline-block font-serif text-4xl font-bold text-red-900 after:absolute after:bottom-0 after:left-1/2 after:h-1 after:w-24 after:-translate-x-1/2 after:bg-red-900 after:content-[''] md:text-5xl">
-                    Food Varieties
-                  </h1>
-
-                  <h2 className="mb-8 text-xl font-medium uppercase tracking-wider text-gray-700 md:text-2xl">
-                    Our Menu
-                  </h2>
-
-                  <p className="mx-auto max-w-prose text-base leading-relaxed text-gray-600 md:text-lg">
-                    A sanctuary for everyone who desire a self-treatment, we have carefully curated
-                    to redefine the world of Fine Dining, Bar and Entertainment. Allowing guests to
-                    relax, socialize and celebrate in the most elegant environment that stimulates
+          <div className="mx-auto my-8 mt-12 w-full max-w-[90%]">
+            {/* Grid container */}
+            <div className="grid h-full w-full grid-cols-1 lg:grid-cols-2">
+              {/* Text Section */}
+              <div className="order-2 flex h-full items-center justify-center bg-white px-10 py-10 text-center text-gray-900 sm:order-1">
+                <div>
+                  <h1 className="font-primary2 text-4xl text-yellow-500">Food Varieties</h1>
+                  <h2 className="mb-10 text-2xl font-bold uppercase text-gray-900">Our Menu</h2>
+                  <p className="mt-4 text-lg font-medium text-gray-700">
+                    A sanctuary for everyone who desires a self-treatment, we have carefully curated
+                    to redefine the world of Fine Dining, Bar, and Entertainment. Allowing guests to
+                    relax, socialize, and celebrate in the most elegant environment that stimulates
                     the body and soul, creating an unforgettable emotional experience.
                   </p>
 
-                  <div className="mt-8">
-                    <button className="rounded-full border-2 border-red-900 bg-red-900 px-6 py-2 font-medium text-white transition-colors hover:bg-white hover:text-red-900">
-                      View Menu
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => navigate('/menu')}
+                    className="group relative mt-7 cursor-pointer overflow-hidden border-2 border-gray-900 px-6 py-2 font-medium text-gray-900"
+                  >
+                    <span className="relative z-10 uppercase tracking-widest transition-colors duration-300 group-hover:text-white">
+                      view menu
+                    </span>
+                    <span className="absolute inset-0 z-0 block w-0 bg-gray-900 transition-all duration-300 ease-in-out group-hover:w-full"></span>
+                  </button>
                 </div>
+              </div>
 
-                {/* Image section */}
-                <div className="relative order-1 h-[400px] overflow-hidden sm:order-2 sm:h-auto">
-                  <img
-                    className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
-                    src="buffalo wings.webp"
-                    alt="Delicious buffalo wings with dipping sauce"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
-                </div>
+              {/* Image Section */}
+              <div className="order-1 h-full sm:order-2">
+                <img
+                  className="h-full w-full object-cover"
+                  src="/buffalo wings.webp"
+                  alt="Barbecue Wings"
+                />
               </div>
             </div>
           </div>
