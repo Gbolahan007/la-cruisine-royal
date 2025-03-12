@@ -21,7 +21,7 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
             animate={{ y: 0 }} // Slide down to visible
             exit={{ y: '-100%' }} // Slide back up when closing
             transition={{ ease: 'easeInOut', duration: 0.5 }}
-            className="absolute left-0 top-0 w-full bg-white p-4 shadow-lg"
+            className="z- absolute left-0 top-0 w-full bg-white p-4 shadow-lg"
           >
             {/* Close Button */}
             <div className="flex justify-end">
@@ -35,7 +35,7 @@ function HamburgerMenu({ isOpenModal, setIsOpenModal }) {
             </div>
 
             {/* Menu Items */}
-            <ul className="mt-1 flex flex-col gap-4 text-center">
+            <ul className="z-50 mt-1 flex flex-col gap-4 text-center">
               <li>
                 <button
                   onClick={() => handleNavigation('/about')}
