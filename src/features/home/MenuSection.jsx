@@ -7,7 +7,7 @@ const MenuSection = () => {
   return (
     <Parallax
       strength={400}
-      bgImage="/yyy.webp"
+      bgImage="/hero.webp"
       bgImageStyle={{
         width: '100%',
         height: '100%',
@@ -15,7 +15,7 @@ const MenuSection = () => {
         objectPosition: 'center',
       }}
     >
-      <div className="relative z-30 mx-auto my-10 mt-28 w-full max-w-[90%]">
+      <div className="relative z-30 mx-auto mb-28 mt-28 w-full max-w-[90%]">
         <div className="grid h-full w-full grid-cols-1 lg:grid-cols-2">
           <div className="order-2 flex h-full items-center justify-center bg-white px-10 py-10 text-center text-gray-900 sm:order-1">
             <div>

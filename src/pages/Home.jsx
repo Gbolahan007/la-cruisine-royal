@@ -1,4 +1,5 @@
 import { lazy, Suspense } from 'react';
+import Loader from '../Loader';
 
 // Lazy load components
 const HeroSection = lazy(() => import('../features/home/HeroSection'));
@@ -9,35 +10,12 @@ const Location = lazy(() => import('../features/home/Location'));
 function Home() {
   return (
     <div className="relative">
-      {/* Lazy load HeroSection */}
-      <Suspense
-        fallback={
-          <div className="flex h-screen items-center justify-center text-lg">Loading...</div>
-        }
-      >
+      <Suspense fallback={<Loader />}>
         <HeroSection />
-      </Suspense>
-
-      {/* Spacer to push content down */}
-      <div className="h-screen"></div>
-
-      {/* Lazy load StorySection */}
-      <Suspense
-        fallback={<div className="flex h-60 items-center justify-center text-lg">Loading...</div>}
-      >
+        {/* Spacer to push content down */}
+        <div className="h-screen"></div>;
         <StorySection />
-      </Suspense>
-
-      {/* Lazy load MenuSection */}
-      <Suspense
-        fallback={<div className="flex h-96 items-center justify-center text-lg">Loading...</div>}
-      >
         <MenuSection />
-      </Suspense>
-
-      <Suspense
-        fallback={<div className="flex h-96 items-center justify-center text-lg">Loading...</div>}
-      >
         <Location />
       </Suspense>
     </div>
