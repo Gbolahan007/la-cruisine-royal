@@ -15,7 +15,7 @@ function SwiperSlider() {
       loop={true}
       speed={1000}
       slidesPerView={1}
-      className="h-64 w-full" // Adjust size as needed
+      className="h-64 w-full"
     >
       <SwiperSlide>
         <img src="/images/slide1.jpg" alt="Slide 1" className="h-full w-full object-cover" />
