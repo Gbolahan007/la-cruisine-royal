@@ -41,16 +41,16 @@ function Header() {
       <nav className="container mx-auto flex items-center justify-between px-4 py-6 sm:justify-around">
         <div
           onClick={() => navigate('/home')}
-          className={`cursor-pointer text-2xl font-bold ${scrolled ? 'text-black' : 'font font-primary text-white'}`}
+          className={`cursor-pointer text-2xl font-bold ${scrolled ? 'text-black' : 'font-primary text-white'}`}
         >
           <span className="text-yellow-300">La</span> Cruisine Royal
         </div>
 
         <nav className="hidden sm:block">
-          <ul className="flex space-x-6 font-semibold">
+          <ul className="flex items-center space-x-6 font-semibold text-white">
             <li>
               <NavLink
-                to="/"
+                to="/home"
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium text-yellow-400'
@@ -92,7 +92,7 @@ function Header() {
             </li>
             <li>
               <NavLink
-                to="/about"
+                to="/Services"
                 className={({ isActive }) =>
                   isActive
                     ? 'font-medium text-yellow-400'
@@ -121,21 +121,6 @@ function Header() {
 
             <li>
               <NavLink
-                to="/Reservation"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Reservation
-              </NavLink>
-            </li>
-
-            <li>
-              <NavLink
                 to="/Login"
                 className={({ isActive }) =>
                   isActive
@@ -147,6 +132,22 @@ function Header() {
               >
                 Login
               </NavLink>
+            </li>
+
+            <li className="group relative overflow-hidden">
+              <NavLink
+                to="/Reservation"
+                className={({ isActive }) =>
+                  isActive
+                    ? 'relative z-10 block border-2 border-yellow-400 bg-yellow-400 px-6 py-2 font-medium text-black'
+                    : scrolled
+                      ? 'relative z-10 block border-2 border-yellow-400 px-6 py-2 font-medium text-black transition-colors duration-300 group-hover:text-white'
+                      : 'relative z-10 block border-2 border-yellow-400 px-6 py-2 font-medium text-white transition-colors duration-300 group-hover:text-black'
+                }
+              >
+                Reservation
+              </NavLink>
+              <span className="absolute inset-0 z-0 block w-0 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </li>
           </ul>
         </nav>
