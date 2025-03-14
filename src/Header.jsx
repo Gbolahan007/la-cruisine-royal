@@ -1,8 +1,9 @@
 import { AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { HiOutlineBars4 } from 'react-icons/hi2';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import HamburgerMenu from './HamburgerMenu';
+import NavigationMenu from './NavigationMenu';
 
 function Header() {
   const navigate = useNavigate();
@@ -11,24 +12,17 @@ function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Check if page is scrolled more than 50px
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
 
-    // Add scroll event listener
     window.addEventListener('scroll', handleScroll);
-
-    // Clean up the event listener when component unmounts
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
   function handleModal() {
+    console.log('open');
     setIsOpenModal(true);
   }
 
@@ -39,119 +33,20 @@ function Header() {
       }`}
     >
       <nav className="container mx-auto flex items-center justify-between px-4 py-6 sm:justify-around">
+        {/* Logo */}
         <div
           onClick={() => navigate('/home')}
-          className={`cursor-pointer text-2xl font-bold ${scrolled ? 'text-black' : 'font-primary text-white'}`}
+          className={`cursor-pointer text-2xl font-bold ${
+            scrolled ? 'text-black' : 'font-primary text-white'
+          }`}
         >
           <span className="text-yellow-300">La</span> Cruisine Royal
         </div>
 
-        <nav className="hidden sm:block">
-          <ul className="flex items-center space-x-6 font-semibold text-white">
-            <li>
-              <NavLink
-                to="/home"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/services"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                About
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/about"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Menu
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/Services"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Services
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                to="/contact"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Contact
-              </NavLink>
-            </li>
+        {/* Desktop Menu */}
+        <NavigationMenu scrolled={scrolled} />
 
-            <li>
-              <NavLink
-                to="/Login"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Login
-              </NavLink>
-            </li>
-
-            <li className="group relative overflow-hidden">
-              <NavLink
-                to="/Reservation"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'relative z-10 block border-2 border-yellow-400 bg-yellow-400 px-6 py-2 font-medium text-black'
-                    : scrolled
-                      ? 'relative z-10 block border-2 border-yellow-400 px-6 py-2 font-medium text-black transition-colors duration-300 group-hover:text-white'
-                      : 'relative z-10 block border-2 border-yellow-400 px-6 py-2 font-medium text-white transition-colors duration-300 group-hover:text-black'
-                }
-              >
-                Reservation
-              </NavLink>
-              <span className="absolute inset-0 z-0 block w-0 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
-            </li>
-          </ul>
-        </nav>
-
+        {/* Mobile Menu Button */}
         <div className="absolute right-4 cursor-pointer sm:hidden">
           <button
             onClick={handleModal}
@@ -162,13 +57,12 @@ function Header() {
             <HiOutlineBars4 size={27} />
           </button>
         </div>
-
-        <AnimatePresence>
-          {isOpenModal && (
-            <HamburgerMenu isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />
-          )}
-        </AnimatePresence>
       </nav>
+
+      {/* Mobile Menu with AnimatePresence */}
+      <AnimatePresence>
+        {isOpenModal && <HamburgerMenu isOpenModal={isOpenModal} setIsOpenModal={setIsOpenModal} />}
+      </AnimatePresence>
     </header>
   );
 }
