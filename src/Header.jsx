@@ -34,7 +34,7 @@ function Header() {
 
   return (
     <header
-      className={`fixed left-0 top-0 z-10 w-full transition-all duration-300 ${
+      className={`fixed left-0 top-0 z-50 w-full transition-all duration-300 ${
         scrolled ? 'bg-white shadow-md' : 'bg-transparent'
       }`}
     >
