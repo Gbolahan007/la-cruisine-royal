@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import { differenceInSeconds } from 'date-fns';
 
 function ClosingCountdown() {
   const [timeLeft, setTimeLeft] = useState(getTimeLeft());
@@ -14,26 +13,47 @@ function ClosingCountdown() {
 
   function getTimeLeft() {
     const now = new Date();
+
+    // Set open and closing times
+    const openTime = new Date();
+    openTime.setHours(7, 0, 0, 0); // Opens at 7 AM
+
     const closingTime = new Date();
-    closingTime.setHours(22, 0, 0, 0); // Set closing time to 10 PM
+    closingTime.setHours(22, 0, 0, 0); // Closes at 10 PM
 
-    if (now >= closingTime) return 'Closed'; // If past 10 PM
+    if (now < openTime) {
+      // If it's before opening time
+      const secondsToOpen = (openTime - now) / 1000;
+      const hours = Math.floor(secondsToOpen / 3600);
+      const minutes = Math.floor((secondsToOpen % 3600) / 60);
+      return { status: 'closed', message: `Opens in ${hours}h ${minutes}m` };
+    }
 
-    const secondsLeft = differenceInSeconds(closingTime, now);
+    if (now >= closingTime) {
+      // If it's past closing time, show next opening time
+      const nextOpening = new Date();
+      nextOpening.setDate(nextOpening.getDate() + 1); // Move to next day
+      nextOpening.setHours(7, 0, 0, 0);
 
+      const secondsToOpen = (nextOpening - now) / 1000;
+      const hours = Math.floor(secondsToOpen / 3600);
+      const minutes = Math.floor((secondsToOpen % 3600) / 60);
+      return { status: 'closed', message: `We are closed. Opens in ${hours}h ${minutes}m` };
+    }
+
+    // Calculate time left until closing
+    const secondsLeft = (closingTime - now) / 1000;
     const hours = Math.floor(secondsLeft / 3600);
     const minutes = Math.floor((secondsLeft % 3600) / 60);
-    const seconds = secondsLeft % 60;
-
-    return `${hours}h ${minutes}m ${seconds}s`;
+    return { status: 'open', message: `Closing in ${hours}h ${minutes}m` };
   }
 
   return (
     <div className="text-center text-lg font-bold">
-      {timeLeft === 'Closed' ? (
-        <span className="text-red-500">We are closed</span>
+      {timeLeft.status === 'closed' ? (
+        <span className="text-red-500">{timeLeft.message}</span>
       ) : (
-        <span className="text-green-500">Closing in: {timeLeft}</span>
+        <span className="text-green-500">{timeLeft.message}</span>
       )}
     </div>
   );
