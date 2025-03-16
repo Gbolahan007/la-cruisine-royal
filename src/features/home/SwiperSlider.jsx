@@ -22,6 +22,7 @@ function SwiperSlider() {
   const swiperRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
+  const navigate = 
 
   // Sample menu items
   const menuItems = [
@@ -57,7 +58,7 @@ function SwiperSlider() {
     <div className="relative bg-gradient-to-b from-white to-gray-50 py-12">
       {/* Add custom styles to hide default arrows */}
       <style>{customStyles}</style>
-      
+
       <div className="mx-auto max-w-7xl px-4">
         <h2 className="mb-8 text-center text-2xl font-bold text-gray-800 md:text-3xl">
           Our Popular Items
@@ -92,15 +93,15 @@ function SwiperSlider() {
           <div className="w-full lg:w-2/3">
             <div className="relative">
               {/* Custom Navigation Buttons */}
-              <button 
+              <button
                 ref={navigationPrevRef}
                 className="absolute left-0 top-1/2 z-10 -ml-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white shadow-md"
                 aria-label="Previous slide"
               >
                 <FaChevronLeft className="text-gray-600" />
               </button>
-              
-              <button 
+
+              <button
                 ref={navigationNextRef}
                 className="absolute right-0 top-1/2 z-10 -mr-4 flex h-10 w-10 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-white shadow-md"
                 aria-label="Next slide"
