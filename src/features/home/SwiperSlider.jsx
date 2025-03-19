@@ -8,6 +8,7 @@ import { FaCircle, FaRegCircle, FaChevronLeft, FaChevronRight } from 'react-icon
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import { useNavigate } from 'react-router-dom';
 
 // Custom CSS to hide default Swiper navigation arrows
 const customStyles = `
@@ -22,7 +23,7 @@ function SwiperSlider() {
   const swiperRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
-  const navigate = 
+  const navigate = useNavigate();
 
   // Sample menu items
   const menuItems = [

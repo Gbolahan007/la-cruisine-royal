@@ -1,6 +1,5 @@
-import { IoLocationSharp } from 'react-icons/io5';
-import { MdTableRestaurant, MdTv } from 'react-icons/md';
-import { FaWineGlassAlt } from 'react-icons/fa';
+import { FaRegClock, FaShippingFast, FaSmileBeam } from 'react-icons/fa';
+import { GiKnifeFork } from 'react-icons/gi';
 import CountUp from 'react-countup';
 import ScrollTrigger from 'react-scroll-trigger';
 import { useState } from 'react';
@@ -10,27 +9,29 @@ function Location() {
 
   return (
     <div className="relative py-32">
-      <div className="absolute inset-0 bg-black bg-opacity-50"></div> {/* Dark overlay */}
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+
       <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
-        <div className="relative z-10 flex flex-wrap items-center justify-center gap-12">
-          {/* Stats Card Component */}
+        <div className="relative z-10 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+          {/* Stats Cards */}
           {[
-            { icon: <IoLocationSharp size={50} />, label: 'Location', count: 1 },
-            { icon: <MdTableRestaurant size={50} />, label: 'Tables', count: 145 },
-            { icon: <FaWineGlassAlt size={50} />, label: 'Varieties', count: 1075 },
-            { icon: <MdTv size={50} />, label: 'Entertainment', count: 2 },
+            { icon: <FaRegClock size={40} />, label: 'Hours of Expertise', count: 10 },
+            { icon: <GiKnifeFork size={40} />, label: 'Meals Served', count: 11175 },
+            { icon: <FaShippingFast size={40} />, label: 'Orders Delivered', count: 12200 },
+            { icon: <FaSmileBeam size={40} />, label: 'Satisfied Customers', count: 8500 },
           ].map((item, index) => (
             <div
               key={index}
-              className="group flex w-44 flex-col items-center justify-center rounded-lg border border-gray-700 bg-white/10 p-6 text-white shadow-2xl backdrop-blur-lg transition-all duration-300 hover:scale-105"
+              className="group flex h-56 w-52 flex-col items-center justify-center rounded-xl border border-gray-700 bg-white/10 p-6 text-white shadow-lg backdrop-blur-lg transition-all duration-300 hover:scale-105 hover:border-gray-500 hover:shadow-xl"
             >
-              <div className="mb-4 text-white transition-colors duration-300 group-hover:text-gray-300">
+              <div className="mb-3 text-green-400 transition-all duration-300 group-hover:text-yellow-300">
                 {item.icon}
               </div>
-              <h1 className="text-5xl font-bold text-white transition-colors duration-300 group-hover:text-gray-300">
-                {counterOn && <CountUp start={0} end={item.count} duration={4} delay={0} />}
+              <h1 className="text-4xl font-extrabold tracking-wide text-white transition-colors duration-300 group-hover:text-yellow-300">
+                {counterOn && <CountUp start={0} end={item.count} duration={4} delay={0} />}+
               </h1>
-              <h1 className="mt-1 text-lg font-semibold uppercase tracking-wide text-white transition-colors duration-300 group-hover:text-gray-300">
+              <h1 className="text-md mt-2 text-center font-semibold uppercase tracking-wider text-gray-300 transition-colors duration-300 group-hover:text-white">
                 {item.label}
               </h1>
             </div>
