@@ -9,6 +9,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { useNavigate } from 'react-router-dom';
+import useHomeMenuItem from '../../pages/useHomeMenuItems';
+import Loader from '../../Loader';
 
 // Custom CSS to hide default Swiper navigation arrows
 const customStyles = `
@@ -19,6 +21,7 @@ const customStyles = `
 `;
 
 function SwiperSlider() {
+  const { homeMenu, isLoadingMenuData } = useHomeMenuItem();
   const [activeIndex, setActiveIndex] = useState(0);
   const [closed, setClosed] = useState(false);
   const swiperRef = useRef(null);
@@ -26,6 +29,7 @@ function SwiperSlider() {
   const navigationNextRef = useRef(null);
   const navigate = useNavigate();
 
+  console.log(homeMenu);
   // Sample menu items
   const menuItems = [
     { id: 1, name: 'Margherita Pizza', price: 7000, image: '/pizza.webp' },
@@ -54,7 +58,9 @@ function SwiperSlider() {
   };
 
   // Calculate how many groups we should have
-  const totalGroups = Math.ceil(menuItems.length / 2);
+  const totalGroups = Math.ceil(homeMenu.length / 2);
+
+  if (isLoadingMenuData) return <Loader />;
 
   return (
     <div className="relative bg-gradient-to-b from-white to-gray-50 py-12">
@@ -146,7 +152,7 @@ function SwiperSlider() {
                 slidesPerGroup={2}
                 className="menu-swiper"
               >
-                {menuItems.map((item) => (
+                {homeMenu.map((item) => (
                   <SwiperSlide key={item.id}>
                     <div className="h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:border-yellow-200 hover:shadow-lg">
                       <div className="relative h-48 overflow-hidden">

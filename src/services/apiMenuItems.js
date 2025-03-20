@@ -1,10 +1,21 @@
 import supabase from './supabase';
 
 export async function getHomeMenuItems() {
-  const { data, error } = await supabase.from('menuitems').select('*').limit(8);
+  const selectedItems = [
+    'Yam and egg sauce',
+    'Buffalo wings',
+    'Egusi soup',
+    'Spaghetti Bolognese',
+    'Margherita Pizza',
+    'Vegetable soup',
+  ];
+
+  const { data, error } = await supabase.from('menuitems').select('*').in('name', selectedItems); // Filter to select only these names
+
   if (error) {
     console.error(error);
     throw new Error('MenuItems could not be loaded');
   }
-  console.log(data);
+
+  return data;
 }
