@@ -8,6 +8,7 @@ const StorySection = lazy(() => import('../features/home/StorySection'));
 const MenuSection = lazy(() => import('../features/home/MenuSection'));
 const Location = lazy(() => import('../features/home/Location'));
 const SwiperSlider = lazy(() => import('../features/home/SwiperSlider'));
+const Testimonials = lazy(() => import('../features/home/Testimonials'));
 
 function Home() {
   return (
@@ -20,6 +21,7 @@ function Home() {
         <MenuSection />
         <Location />
         <SwiperSlider />
+        <Testimonials />
         <GetDirectionsButton />
       </Suspense>
     </div>

@@ -20,6 +20,7 @@ const customStyles = `
 
 function SwiperSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [closed, setClosed] = useState(false);
   const swiperRef = useRef(null);
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
@@ -79,13 +80,18 @@ function SwiperSlider() {
               </p>
 
               <div className="text-2xl font-bold text-yellow-500">
-                <ClosingCountdown />
+                <ClosingCountdown setClosed={setClosed} />
               </div>
 
               <div className="mt-6 flex justify-center">
-                <button className="rounded-full border-2 border-yellow-300 bg-yellow-300 px-6 py-2 font-medium text-gray-800 transition-colors hover:bg-white hover:text-gray-800">
-                  Order Now
-                </button>
+                {!closed && (
+                  <button
+                    onClick={() => navigate('/menu')}
+                    className="rounded-full border-2 border-yellow-300 bg-yellow-300 px-6 py-2 font-medium text-gray-800 transition-colors hover:bg-white hover:text-gray-800"
+                  >
+                    Order Now
+                  </button>
+                )}
               </div>
             </div>
           </div>

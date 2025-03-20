@@ -73,7 +73,7 @@ function Header() {
                       : 'text-white hover:text-yellow-200'
                 }
               >
-                About
+                Menu
               </NavLink>
             </li>
             <li>
@@ -87,23 +87,10 @@ function Header() {
                       : 'text-white hover:text-yellow-200'
                 }
               >
-                Menu
+                About
               </NavLink>
             </li>
-            <li>
-              <NavLink
-                to="/Services"
-                className={({ isActive }) =>
-                  isActive
-                    ? 'font-medium text-yellow-400'
-                    : scrolled
-                      ? 'text-black hover:text-yellow-400'
-                      : 'text-white hover:text-yellow-200'
-                }
-              >
-                Services
-              </NavLink>
-            </li>
+
             <li>
               <NavLink
                 to="/contact"
