@@ -19,3 +19,14 @@ export async function getHomeMenuItems() {
 
   return data;
 }
+
+export async function getCategories() {
+  const { data, error } = await supabase.from('menuitems').select('*').in('name');
+
+  if (error) {
+    console.error(error);
+    throw new Error('MenuItems could not be loaded');
+  }
+
+  return data;
+}
