@@ -8,7 +8,7 @@ import { FaCircle, FaRegCircle, FaChevronLeft, FaChevronRight } from 'react-icon
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import useHomeMenuItem from '../../pages/useHomeMenuItems';
 import Loader from '../../Loader';
 
@@ -28,17 +28,6 @@ function SwiperSlider() {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   const navigate = useNavigate();
-
-  console.log(homeMenu);
-  // Sample menu items
-  const menuItems = [
-    { id: 1, name: 'Margherita Pizza', price: 7000, image: '/pizza.webp' },
-    { id: 2, name: 'Barbecue Wings', price: 8500, image: '/barbecue.webp' },
-    { id: 3, name: 'Spaghetti Bolognese', price: 7500, image: '/Spaghetti-Bolognese.webp' },
-    { id: 4, name: 'Egusi soup', price: 9000, image: '/Egusi-soup.webp' },
-    { id: 5, name: 'Yam Egg Sauce', price: 8000, image: '/Yam-Egg-Sauce.webp' },
-    { id: 6, name: 'Chocolate Cake Slice', price: 8000, image: '/Chocolate-Cake-Slice.webp' },
-  ];
 
   // Format price with currency
   const formatPrice = (price) => {
@@ -154,24 +143,26 @@ function SwiperSlider() {
               >
                 {homeMenu.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <div className="h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:border-yellow-200 hover:shadow-lg">
-                      <div className="relative h-48 overflow-hidden">
-                        <img
-                          src={item.image || '/placeholder.svg'}
-                          alt={item.name}
-                          className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                        />
-                      </div>
-                      <div className="p-4">
-                        <h3 className="mb-2 text-lg font-semibold text-gray-800">{item.name}</h3>
-                        <div className="flex items-center justify-between">
-                          <p className="text-sm text-gray-600">Freshly made</p>
-                          <p className="text-lg font-bold text-yellow-500">
-                            {formatPrice(item.price)}
-                          </p>
+                    <Link to={`/menu/${item.slug}`}>
+                      <div className="h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:border-yellow-200 hover:shadow-lg">
+                        <div className="relative h-48 overflow-hidden">
+                          <img
+                            src={item.image || '/placeholder.svg'}
+                            alt={item.name}
+                            className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
+                          />
+                        </div>
+                        <div className="p-4">
+                          <h3 className="mb-2 text-lg font-semibold text-gray-800">{item.name}</h3>
+                          <div className="flex items-center justify-between">
+                            <p className="text-sm text-gray-600">Freshly made</p>
+                            <p className="text-lg font-bold text-yellow-500">
+                              {formatPrice(item.price)}
+                            </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    </Link>
                   </SwiperSlide>
                 ))}
               </Swiper>

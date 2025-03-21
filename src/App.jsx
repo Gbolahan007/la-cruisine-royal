@@ -9,6 +9,7 @@ import Menu from './pages/Menu';
 import Reservation from './Reservation';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import MenuDetail from './MenuDetail';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -32,6 +33,7 @@ function App() {
 
             <Route path="/services" element={<Services />} />
             <Route path="/menu" element={<Menu />} />
+            <Route path="/menu/:slug" element={<MenuDetail />} />
             <Route path="/reservation" element={<Reservation />} />
           </Route>
           <Route path="*" element={<PageNotFound />} />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaStar, FaStarHalfAlt, FaQuoteLeft } from 'react-icons/fa';
 
 const Testimonials = () => {
