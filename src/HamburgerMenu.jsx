@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 function HamburgerMenu({ setIsOpenModal }) {
   const navigate = useNavigate();
 
-  // Function to handle navigation and close modal
   const handleNavigation = (path) => {
     navigate(path);
     setIsOpenModal(false);
