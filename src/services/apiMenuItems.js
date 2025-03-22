@@ -10,7 +10,7 @@ export async function getHomeMenuItems() {
     'Vegetable soup',
   ];
 
-  const { data, error } = await supabase.from('menuitems').select('*').in('name', selectedItems); // Filter to select only these names
+  const { data, error } = await supabase.from('menuitems').select('*').in('name', selectedItems);
 
   if (error) {
     console.error(error);
@@ -19,23 +19,44 @@ export async function getHomeMenuItems() {
 
   return data;
 }
+
 export async function getCategory() {
-  // Fetch first 5 rows for Menu
+  // Define category names
+  const menuCategories = [
+    'desserts',
+    'amuse bouche',
+    'Wake Me Up',
+    'Naija Pot',
+    'Continental Meals',
+  ];
+
+  const drinkCategories = [
+    'Soft Drinks',
+    'Whiskey',
+    'Energy Drinks',
+    'Tequila',
+    'Beer',
+    'Champagne',
+    'Vodka',
+    'Cocktails',
+  ];
+
+  // Fetch menu categories
   const { data: menuData, error: menuError } = await supabase
     .from('subcategories')
     .select('*')
-    .range(0, 4);
+    .in('name', menuCategories);
 
   if (menuError) {
     console.error(menuError);
     throw new Error('Menu categories could not be loaded');
   }
 
-  // Fetch next 7 rows for Drinks
+  // Fetch drinks categories
   const { data: drinksData, error: drinksError } = await supabase
     .from('subcategories')
     .select('*')
-    .range(5, 11);
+    .in('name', drinkCategories);
 
   if (drinksError) {
     console.error(drinksError);
