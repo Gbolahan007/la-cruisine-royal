@@ -5,7 +5,8 @@ export default {
     extend: {
       fontFamily: {
         primary: ['Ponomar', 'sans-serif'],
-        primary2: ['Pacifico', 'sans-serif'], // Custom font
+        primary2: ['Pacifico', 'sans-serif'],
+        primary3: ['Kaushan Script', 'cursive'],
       },
     },
   },

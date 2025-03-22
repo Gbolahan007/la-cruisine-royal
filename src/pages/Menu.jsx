@@ -8,8 +8,6 @@ function Menu() {
     <div className="relative">
       <Suspense fallback={<Loader />}>
         <MenuHeroSection />
-        {/* Spacer to push content down */}
-        <div className="h-screen"></div>
       </Suspense>
     </div>
   );
