@@ -17,7 +17,7 @@ const Footer = () => {
             <h3 className="mb-6 text-2xl font-bold">La Cruisine Royal</h3>
             <p className="mb-4 text-gray-400">Elevating culinary experiences since 2018.</p>
             <p className="text-gray-400">
-              © {new Date().getFullYear()} Saveur Lounge. All rights reserved.
+              © {new Date().getFullYear()} La Cruisine Royal. All rights reserved.
             </p>
           </div>
 
@@ -59,9 +59,6 @@ const Footer = () => {
               <li className="flex justify-between">
                 <span>Sunday</span>
                 <span>11AM - 9PM</span>
-              </li>
-              <li className="mt-4 border-t border-gray-700 pt-4">
-                <span className="text-amber-400">Happy Hour: 4PM - 6PM Daily</span>
               </li>
             </ul>
           </div>
