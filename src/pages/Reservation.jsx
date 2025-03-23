@@ -1,5 +1,6 @@
 import { Parallax } from 'react-parallax';
 import { Link as ScrollLink } from 'react-scroll';
+import RestaurantForm from '../features/reservation/RestaurantForm';
 
 function Reservation() {
   return (
@@ -30,7 +31,7 @@ function Reservation() {
           {/* Navigation Links */}
           <div className="mt-8 flex space-x-12">
             <ScrollLink
-              to="Reservation"
+              to="reservation"
               smooth={true}
               duration={800}
               className="cursor-pointer border-b-2 border-transparent px-4 py-2 text-xl font-medium uppercase transition-colors hover:border-yellow-300 hover:text-yellow-300"
@@ -40,7 +41,9 @@ function Reservation() {
           </div>
         </div>
       </Parallax>
-      llllllllllllllll
+      <div className="my-16">
+        <RestaurantForm />
+      </div>
     </div>
   );
 }
