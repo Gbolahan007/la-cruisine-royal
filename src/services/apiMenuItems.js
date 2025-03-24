@@ -79,3 +79,14 @@ export async function getMenuItemsBySubcategory(subcategoryId) {
 
   return data;
 }
+
+export async function getItem(slug) {
+  const { data, error } = await supabase.from('menuitems').select('*').eq('slug', slug);
+
+  if (error) {
+    console.error(error);
+    throw new Error('Menu items could not be loaded');
+  }
+
+  return data;
+}

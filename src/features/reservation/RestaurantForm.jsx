@@ -51,7 +51,7 @@ function RestaurantForm() {
   }
 
   return (
-    <div id="reservation" className="mx-auto max-w-2xl rounded-lg p-6 font-primary3 shadow-md">
+    <div id="reservation" className="mx-auto max-w-lg rounded-lg p-6 font-primary3 shadow-lg">
       {/* Toast container */}
       <Toaster />
 
@@ -65,7 +65,7 @@ function RestaurantForm() {
             <input
               type="text"
               placeholder="Your Name"
-              className="w-[400px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-[350px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
               {...register('fullName', { required: 'Full name is required' })}
             />
             {errors.fullName && <p className="text-sm text-red-600">{errors.fullName.message}</p>}
@@ -76,7 +76,7 @@ function RestaurantForm() {
             <input
               type="tel"
               placeholder="Phone Number"
-              className="w-[400px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-[350px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
               {...register('phone', { required: 'Phone number is required' })}
             />
             {errors.phone && <p className="text-sm text-red-600">{errors.phone.message}</p>}
@@ -89,7 +89,7 @@ function RestaurantForm() {
           <input
             type="email"
             placeholder="Email"
-            className="w-[400px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-[350px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
             {...register('email', {
               required: 'Email is required',
               pattern: {
@@ -107,7 +107,7 @@ function RestaurantForm() {
             <label className="mb-1 block text-sm font-medium text-gray-700">Reservation Date</label>
             <input
               type="date"
-              className="w-[400px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+              className="w-[350px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
               {...register('date', { required: 'Date are required' })}
             />
             {errors.reservationDateTime && (
@@ -120,7 +120,7 @@ function RestaurantForm() {
         <div>
           <label className="mb-1 block text-sm font-medium text-gray-700">Number of Guests</label>
           <select
-            className="w-[400px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-[350px] rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
             {...register('partySize', {
               required: 'Number of guests is required',
             })}
@@ -145,7 +145,7 @@ function RestaurantForm() {
           <textarea
             placeholder="Dietary requirements, special occasions, seating preferences, etc."
             rows={4}
-            className="w-[400px] resize-y rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500"
+            className="w-[350px] resize-y rounded-md border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-amber-500 sm:w-[400px]"
             {...register('specialRequests')}
           ></textarea>
         </div>
