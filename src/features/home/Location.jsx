@@ -13,10 +13,10 @@ function Location() {
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       <ScrollTrigger onEnter={() => setCounterOn(true)} onExit={() => setCounterOn(false)}>
-        <div className="relative z-10 flex flex-wrap items-center justify-center gap-8 md:gap-12">
+        <div className="relative flex flex-wrap items-center justify-center gap-8 md:gap-12">
           {/* Stats Cards */}
           {[
-            { icon: <FaRegClock size={40} />, label: 'Hours of Expertise', count: 10 },
+            { icon: <FaRegClock size={40} />, label: 'Hours of Expertise', count: 100 },
             { icon: <GiKnifeFork size={40} />, label: 'Meals Served', count: 11175 },
             { icon: <FaShippingFast size={40} />, label: 'Orders Delivered', count: 12200 },
             { icon: <FaSmileBeam size={40} />, label: 'Satisfied Customers', count: 8500 },
