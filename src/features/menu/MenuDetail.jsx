@@ -1,7 +1,7 @@
 import { Parallax } from 'react-parallax';
 import Loader from '../../Loader';
 import useGetItem from '../../pages/useGetItem';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useMoveBack } from '../../hooks/useMoveBack';
 
 const formatPrice = (price) => {
@@ -33,23 +33,24 @@ function MenuDetail() {
 
       <div className="container mx-auto px-6 py-16 font-primary3">
         <h2 className="mb-10 text-center text-4xl font-extrabold uppercase text-gray-900">
-          {slug}
+          {slug.replaceAll('-', ' ')}
         </h2>
 
         <div className="space-y-8">
           {item.map((menuItem) => (
-            <div
-              key={menuItem.id}
-              className="flex items-start justify-between border-b border-gray-300 pb-6"
-            >
-              <div className="max-w-2xl">
-                <h3 className="text-2xl font-semibold text-gray-900">{menuItem.name}</h3>
-                <p className="mt-2 text-lg leading-relaxed text-gray-600">{menuItem.description}</p>
+            <Link key={menuItem.id} to={`/menu/${menuItem.category}/${menuItem.slug}`}>
+              <div className="flex items-start justify-between border-b border-gray-300 pb-6">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-semibold text-gray-900">{menuItem.name}</h3>
+                  <p className="mt-2 text-lg leading-relaxed text-gray-600">
+                    {menuItem.description}
+                  </p>
+                </div>
+                <span className="ml-6 text-2xl font-bold text-red-600">
+                  {formatPrice(menuItem.price)}
+                </span>
               </div>
-              <span className="ml-6 text-2xl font-bold text-red-600">
-                {formatPrice(menuItem.price)}
-              </span>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

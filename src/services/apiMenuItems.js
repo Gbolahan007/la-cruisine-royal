@@ -66,17 +66,14 @@ export async function getCategory() {
   return { menu: menuData, drinks: drinksData };
 }
 
-export async function getMenuItemsBySubcategory(subcategoryId) {
-  const { data, error } = await supabase
-    .from('menuitems')
-    .select('*')
-    .eq('subcategory_id', subcategoryId);
+export async function getMenuItemsBySubcategory(slug) {
+  const { data, error } = await supabase.from('menuitems').select('*').eq('slug', slug);
 
   if (error) {
     console.error(error);
     throw new Error('Menu items could not be loaded');
   }
-
+  console.log(data);
   return data;
 }
 

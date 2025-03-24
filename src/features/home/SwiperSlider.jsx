@@ -143,7 +143,7 @@ function SwiperSlider() {
               >
                 {homeMenu.map((item) => (
                   <SwiperSlide key={item.id}>
-                    <Link to={`/menu/${item.slug}`}>
+                    <Link to={`/menu/${item.category}/${item.slug}`}>
                       <div className="h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:border-yellow-200 hover:shadow-lg">
                         <div className="relative h-48 overflow-hidden">
                           <img
