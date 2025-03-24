@@ -81,12 +81,26 @@ export async function getMenuItemsBySubcategory(subcategoryId) {
 }
 
 export async function getItem(slug) {
-  const { data, error } = await supabase.from('menuitems').select('*').eq('slug', slug);
+  const { data: subcategory, error: subError } = await supabase
+    .from('subcategories')
+    .select('id')
+    .eq('slug', slug)
+    .single();
 
-  if (error) {
-    console.error(error);
-    throw new Error('Menu items could not be loaded');
+  if (subError) {
+    console.error(subError);
+    throw new Error(' subcategories could not be loaded');
+  }
+  // Then, fetch all menu items linked to this subcategory
+  const { data: items, error: itemError } = await supabase
+    .from('menuitems')
+    .select('*')
+    .eq('subCategoryId', subcategory.id);
+
+  if (itemError) {
+    console.error(itemError);
+    throw new Error(' items could not be loaded');
   }
 
-  return data;
+  return items || [];
 }

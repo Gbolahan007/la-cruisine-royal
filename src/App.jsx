@@ -9,7 +9,7 @@ import PageNotFound from './pages/PageNotFound';
 import Menu from './pages/Menu';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-import MenuDetail from './MenuDetail';
+import MenuDetail from './features/menu/MenuDetail';
 import ScrollToTop from './ScrollToTop';
 
 const queryClient = new QueryClient({
