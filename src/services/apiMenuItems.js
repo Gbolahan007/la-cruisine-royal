@@ -73,7 +73,6 @@ export async function getMenuItemsBySubcategory(slug) {
     console.error(error);
     throw new Error('Menu items could not be loaded');
   }
-  console.log(data);
   return data;
 }
 

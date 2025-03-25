@@ -3,16 +3,28 @@ import useItem from './pages/useItem';
 import { Parallax } from 'react-parallax';
 import { useMoveBack } from './hooks/useMoveBack';
 import Loader from './Loader';
+import { useDispatch } from 'react-redux';
+import { addItem } from './cart/cartSlice';
 
 const formatPrice = (price) => {
   return `₦${price.toLocaleString()}`;
 };
 function ItemDetail() {
   const moveBack = useMoveBack();
-
+  const dispatch = useDispatch();
   const { itemData, isLoadingItemData } = useItem();
+  const { price, name, id } = itemData[0];
 
   if (isLoadingItemData) return <Loader />;
+
+  function handleAddToCart() {
+    const newItem = {
+      id,
+      name,
+      price,
+    };
+    dispatch(addItem(newItem));
+  }
 
   return (
     <div className="relative">
@@ -60,7 +72,10 @@ function ItemDetail() {
               </div>
 
               {/* Add to Cart Button */}
-              <button className="flex w-full items-center justify-center space-x-3 rounded-lg bg-blue-600 py-4 text-white transition hover:bg-blue-700">
+              <button
+                onClick={handleAddToCart}
+                className="flex w-full items-center justify-center space-x-3 rounded-lg bg-blue-600 py-4 text-white transition hover:bg-blue-700"
+              >
                 <FiShoppingCart size={24} />
                 <span className="text-lg font-semibold">Add to Cart</span>
               </button>
