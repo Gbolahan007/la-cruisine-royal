@@ -1,7 +1,7 @@
 import { Parallax } from 'react-parallax';
 import Loader from '../../Loader';
 import useGetItem from '../../pages/useGetItem';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useMoveBack } from '../../hooks/useMoveBack';
 import { FiShoppingCart } from 'react-icons/fi';
 import toast from 'react-hot-toast';

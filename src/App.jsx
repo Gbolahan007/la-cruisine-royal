@@ -13,6 +13,7 @@ import MenuDetail from './features/menu/MenuDetail';
 import ScrollToTop from './ScrollToTop';
 import ItemDetail from './ItemDetail';
 import { Toaster } from 'react-hot-toast';
+import { ModalProvider } from './contexts/ModalContexts';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -25,26 +26,28 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools initialIsOpen={false} />
-      <BrowserRouter>
-        <ScrollToTop />
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route index element={<Navigate replace to="/home" />} />
+      <ModalProvider>
+        <BrowserRouter>
+          <ScrollToTop />
+          <Routes>
+            <Route element={<AppLayout />}>
+              <Route index element={<Navigate replace to="/home" />} />
 
-            <Route path="/home" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/contact" element={<Contact />} />
 
-            <Route path="/services" element={<Services />} />
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/menu/:slug" element={<MenuDetail />} />
-            <Route path="/menu/:category/:slug" element={<ItemDetail />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/menu" element={<Menu />} />
+              <Route path="/menu/:slug" element={<MenuDetail />} />
+              <Route path="/menu/:category/:slug" element={<ItemDetail />} />
 
-            <Route path="/reservation" element={<Reservation />} />
-          </Route>
-          <Route path="*" element={<PageNotFound />} />
-        </Routes>
-      </BrowserRouter>
+              <Route path="/reservation" element={<Reservation />} />
+            </Route>
+            <Route path="*" element={<PageNotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </ModalProvider>
       <Toaster
         position="top-right"
         gutter={12}

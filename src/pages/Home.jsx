@@ -1,6 +1,7 @@
 import { lazy, Suspense } from 'react';
 import Loader from '../Loader';
 import GetDirectionsButton from '../GetDirectionsButton';
+import Cart from '../cart/cart';
 
 // Lazy load components
 const HeroSection = lazy(() => import('../features/home/HeroSection'));

@@ -1,14 +1,12 @@
 import { FiShoppingCart } from 'react-icons/fi';
 import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 
 function HeaderCart({ scrolled }) {
   const cart = useSelector((state) => state.cart.cart);
 
   console.log(cart);
-  const navigate = useNavigate();
   return (
-    <div className="relative cursor-pointer" onClick={() => navigate('/cart')}>
+    <div className="relative cursor-pointer">
       {/* Cart Icon */}
       <FiShoppingCart size={28} className={`${scrolled ? 'text-black' : 'text-white'}`} />
 
