@@ -1,7 +1,10 @@
 import { HiOutlineXMark } from 'react-icons/hi2';
 import { useNavigate } from 'react-router-dom';
+import HeaderCart from './Headercart';
+import { useModal } from './contexts/ModalContexts';
 
 function HamburgerMenu({ setIsOpenModal }) {
+  const { setShowModal } = useModal();
   const navigate = useNavigate();
 
   const handleNavigation = (path) => {
@@ -10,7 +13,7 @@ function HamburgerMenu({ setIsOpenModal }) {
   };
 
   return (
-    <div className="fixed left-0 top-0 z-50 w-full bg-white p-4 shadow-lg">
+    <div className="fixed left-0 top-0 z-50 w-full bg-slate-300 p-4 shadow-lg">
       {/* Close Button */}
       <div className="flex justify-end">
         <button
@@ -64,6 +67,17 @@ function HamburgerMenu({ setIsOpenModal }) {
             Reservation
           </button>
         </li>
+
+        <div
+          onClick={() => {
+            setShowModal(true);
+            setIsOpenModal(false);
+            console.log('cart clicked');
+          }}
+          className="inline-flex items-center justify-center"
+        >
+          <HeaderCart />
+        </div>
       </ul>
     </div>
   );

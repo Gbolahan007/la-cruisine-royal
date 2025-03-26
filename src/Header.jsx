@@ -9,7 +9,7 @@ import { useModal } from './contexts/ModalContexts';
 function Header() {
   const { setShowModal } = useModal();
   const navigate = useNavigate();
-  const [isOpenModal, setIsOpenModal] = useState(false);
+  const { isOpenModal, setIsOpenModal } = useModal();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -140,7 +140,11 @@ function Header() {
               <span className="absolute inset-0 z-0 block w-0 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </li>
 
-            <div onClick={() => setShowModal(true)}>
+            <div
+              onClick={() => {
+                setShowModal(true);
+              }}
+            >
               <HeaderCart scrolled={scrolled} />
             </div>
           </ul>

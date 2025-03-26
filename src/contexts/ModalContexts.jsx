@@ -4,9 +4,12 @@ const ModalContexts = createContext(null);
 
 function ModalProvider({ children }) {
   const [showModal, setShowModal] = useState(false); // Default: Hidden
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   return (
-    <ModalContexts.Provider value={{ showModal, setShowModal }}>{children}</ModalContexts.Provider>
+    <ModalContexts.Provider value={{ showModal, setShowModal, isOpenModal, setIsOpenModal }}>
+      {children}
+    </ModalContexts.Provider>
   );
 }
 

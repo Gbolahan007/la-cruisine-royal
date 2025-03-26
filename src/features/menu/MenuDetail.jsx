@@ -1,17 +1,16 @@
+import { motion } from 'framer-motion';
+import { FiX, FiShoppingCart } from 'react-icons/fi';
+import { useSelector, useDispatch } from 'react-redux';
+import { addItem } from '../../cart/cartSlice';
+import { Link, useParams } from 'react-router-dom';
+import toast from 'react-hot-toast';
 import { Parallax } from 'react-parallax';
 import Loader from '../../Loader';
 import useGetItem from '../../pages/useGetItem';
-import { useParams } from 'react-router-dom';
 import { useMoveBack } from '../../hooks/useMoveBack';
-import { FiShoppingCart } from 'react-icons/fi';
-import toast from 'react-hot-toast';
-import { addItem } from '../../cart/cartSlice';
-import { useDispatch } from 'react-redux';
 import { FaCartShopping } from 'react-icons/fa6';
 
-const formatPrice = (price) => {
-  return `₦${price.toLocaleString()}`;
-};
+const formatPrice = (price) => `₦${price.toLocaleString()}`;
 
 function MenuDetail() {
   const { slug } = useParams();
@@ -51,24 +50,35 @@ function MenuDetail() {
 
         <div className="space-y-8">
           {item.map((menuItem) => (
-            <div
+            <Link
               key={menuItem.id}
-              className="flex items-center justify-between border-b border-gray-300 pb-6"
+              to={`/menu/${menuItem.category}/${menuItem.slug}`}
+              className="block"
             >
-              <div className="max-w-2xl">
-                <h3 className="text-2xl font-semibold text-gray-900">{menuItem.name}</h3>
-                <p className="mt-2 text-lg leading-relaxed text-gray-600">{menuItem.description}</p>
+              <div className="flex items-center justify-between border-b border-gray-300 pb-6">
+                <div className="max-w-2xl">
+                  <h3 className="text-2xl font-semibold text-gray-900">{menuItem.name}</h3>
+                  <p className="mt-2 text-lg leading-relaxed text-gray-600">
+                    {menuItem.description}
+                  </p>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <span className="text-2xl font-bold text-red-600">
+                    {formatPrice(menuItem.price)}
+                  </span>
+                  {/* Add to Cart Button (Icon Only) */}
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleAddToCart(menuItem);
+                    }}
+                    className="hover:text-yellow-500"
+                  >
+                    <FaCartShopping size={24} />
+                  </button>
+                </div>
               </div>
-              <div className="flex items-center space-x-4">
-                <span className="text-2xl font-bold text-red-600">
-                  {formatPrice(menuItem.price)}
-                </span>
-                {/* Add to Cart Button (Icon Only) */}
-                <button onClick={() => handleAddToCart(menuItem)} className="hover:text-yellow-500">
-                  <FaCartShopping size={24} />
-                </button>
-              </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
@@ -85,4 +95,5 @@ function MenuDetail() {
     </div>
   );
 }
+
 export default MenuDetail;

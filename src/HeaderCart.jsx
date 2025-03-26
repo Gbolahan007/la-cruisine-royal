@@ -4,7 +4,6 @@ import { useSelector } from 'react-redux';
 function HeaderCart({ scrolled }) {
   const cart = useSelector((state) => state.cart.cart);
 
-  console.log(cart);
   return (
     <div className="relative cursor-pointer">
       {/* Cart Icon */}

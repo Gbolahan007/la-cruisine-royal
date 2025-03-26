@@ -39,6 +39,12 @@ function ItemDetail() {
         }}
       />
       <div className="container mx-auto px-4 py-12 font-primary2">
+        <button
+          className="mx-4 my-3 bg-gray-900 px-6 py-3 text-lg font-semibold text-white shadow-lg transition hover:bg-gray-800"
+          onClick={moveBack}
+        >
+          ← Back
+        </button>
         {itemData.map((item) => (
           <div
             key={item.id}
@@ -80,12 +86,6 @@ function ItemDetail() {
           </div>
         ))}
       </div>
-      <button
-        className="mx-4 my-3 bg-gray-900 px-6 py-3 text-lg font-semibold text-white shadow-lg transition hover:bg-gray-800"
-        onClick={moveBack}
-      >
-        ← Back
-      </button>
     </div>
   );
 }
