@@ -1,29 +1,26 @@
-import { FiShoppingCart, FiMinus, FiPlus } from 'react-icons/fi';
-import useItem from './pages/useItem';
+import { FiShoppingCart } from 'react-icons/fi';
 import { Parallax } from 'react-parallax';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from './cart/cartSlice';
+import useItem from './pages/useItem';
 import { useMoveBack } from './hooks/useMoveBack';
 import Loader from './Loader';
-import { useDispatch } from 'react-redux';
-import { addItem } from './cart/cartSlice';
+import toast from 'react-hot-toast';
 
-const formatPrice = (price) => {
-  return `₦${price.toLocaleString()}`;
-};
+const formatPrice = (price) => `₦${price.toLocaleString()}`;
+
 function ItemDetail() {
-  const moveBack = useMoveBack();
   const dispatch = useDispatch();
+  const moveBack = useMoveBack();
   const { itemData, isLoadingItemData } = useItem();
-  const { price, name, id } = itemData[0];
 
   if (isLoadingItemData) return <Loader />;
+  if (!itemData || itemData.length === 0)
+    return <div className="py-12 text-center">No items found</div>;
 
-  function handleAddToCart() {
-    const newItem = {
-      id,
-      name,
-      price,
-    };
-    dispatch(addItem(newItem));
+  function handleAddToCart(item) {
+    dispatch(addItem(item));
+    toast.success(`${item.name} has been added to cart`);
   }
 
   return (
@@ -73,7 +70,7 @@ function ItemDetail() {
 
               {/* Add to Cart Button */}
               <button
-                onClick={handleAddToCart}
+                onClick={() => handleAddToCart(item)}
                 className="flex w-full items-center justify-center space-x-3 rounded-lg bg-blue-600 py-4 text-white transition hover:bg-blue-700"
               >
                 <FiShoppingCart size={24} />

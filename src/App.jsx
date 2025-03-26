@@ -12,6 +12,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import MenuDetail from './features/menu/MenuDetail';
 import ScrollToTop from './ScrollToTop';
 import ItemDetail from './ItemDetail';
+import { Toaster } from 'react-hot-toast';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -44,6 +45,34 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+      <Toaster
+        position="top-right"
+        gutter={12}
+        containerStyle={{ margin: '8px' }}
+        toastOptions={{
+          success: {
+            duration: 3000,
+            style: {
+              background: '#4CAF50',
+              color: '#FFFFFF',
+            },
+          },
+          error: {
+            duration: 5000,
+            style: {
+              background: '#D32F2F', // Red background for error
+              color: '#FFFFFF', // White text for error
+            },
+          },
+          style: {
+            fontSize: '16px',
+            maxWidth: '500px',
+            padding: '16px 24px',
+            background: '#222222', // Default background
+            color: '#E0E0E0', // Default text color
+          },
+        }}
+      />
     </QueryClientProvider>
   );
 }

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { HiOutlineBars4 } from 'react-icons/hi2';
 import { NavLink, useNavigate } from 'react-router-dom';
 import HamburgerMenu from './HamburgerMenu';
+import HeaderCart from './Headercart';
 
 function Header() {
   const navigate = useNavigate();
@@ -136,6 +137,10 @@ function Header() {
               </NavLink>
               <span className="absolute inset-0 z-0 block w-0 bg-yellow-400 transition-all duration-300 ease-in-out group-hover:w-full"></span>
             </li>
+
+            <div>
+              <HeaderCart scrolled={scrolled} />
+            </div>
           </ul>
         </nav>
 
