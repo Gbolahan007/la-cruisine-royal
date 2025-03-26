@@ -55,7 +55,7 @@ function MenuDetail() {
               to={`/menu/${menuItem.category}/${menuItem.slug}`}
               className="block"
             >
-              <div className="flex items-center justify-between border-b border-gray-300 pb-6">
+              <div className="flex flex-col gap-3 border-b border-gray-300 pb-6 sm:flex-row sm:items-center sm:justify-between">
                 <div className="max-w-2xl">
                   <h3 className="text-2xl font-semibold text-gray-900">{menuItem.name}</h3>
                   <p className="mt-2 text-lg leading-relaxed text-gray-600">

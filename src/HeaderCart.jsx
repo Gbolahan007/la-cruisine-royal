@@ -7,7 +7,7 @@ function HeaderCart({ scrolled }) {
   return (
     <div className="relative cursor-pointer">
       {/* Cart Icon */}
-      <FiShoppingCart size={28} className={`${scrolled ? 'text-black' : 'text-white'}`} />
+      <FiShoppingCart size={28} className={` ${scrolled ? 'text-black' : 'text-white'}`} />
 
       {/* Cart Count Badge at the Tip */}
       <div className="absolute -right-2 -top-2 flex h-5 w-5 items-center justify-center rounded-full border bg-yellow-500 text-xs font-bold text-white shadow-md">
